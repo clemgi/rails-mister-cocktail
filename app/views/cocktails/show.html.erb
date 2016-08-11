@@ -1,14 +1,37 @@
-<div class="text-center">
-<h1> <%= @cocktail.name %> </h1>
 
- <strong>Recipt:</strong>
-  <p>
+
+
+
+<div class="media">
+  <div class="media-body">
+    <div class="media-section">
+      <h2><%= @cocktail.name.capitalize %></h2>
+      <img src="https://images.unsplash.com/photo-1418479631014-8cbf89db3431?dpr=1&amp;auto=format&amp;crop=entropy&amp;fit=crop&amp;w=1500&amp;h=1000&amp;q=80&amp;cs=tinysrgb" alt>
+    </div>
+    <!-- <div class="media-section">
+      <h2>Description</h2>
+      ...
+    </div> -->
+  </div>
+  <div class="media-aside">
+    <div class="media-section">
+      <h2>Receipt</h2>
+       <p>
   <% @cocktail.doses.each do |dose| %>
     <%= dose.description %>
     <%= dose.ingredient.name %>
+    <%= link_to cocktail_dose_path(@cocktail, dose), method: :delete, data: { confirm: 'Are you sure you want to delete this article?'} do %>
+  <i class="fa fa-trash-o"></i>
+  <% end %>
+
     </p>
   <% end %>
 
+    </div>
+    <div class="media-section">
+      <p><%= link_to 'pimp it!', new_cocktail_dose_path(@cocktail)  %></p>
 
-<%= link_to 'Add a new dose', new_cocktail_dose_path(@cocktail)  %>
+    </div>
+  </div>
 </div>
+
