@@ -1,7 +1,5 @@
 
 
-
-
 <div class="media">
   <div class="media-body">
     <div class="media-section">
@@ -16,20 +14,24 @@
   <div class="media-aside">
     <div class="media-section">
       <h2>Receipt</h2>
-       <p>
-  <% @cocktail.doses.each do |dose| %>
-    <%= dose.description %>
-    <%= dose.ingredient.name %>
-    <%= link_to cocktail_dose_path(@cocktail, dose), method: :delete, data: { confirm: 'Are you sure you want to delete this article?'} do %>
-  <i class="fa fa-trash-o"></i>
-  <% end %>
+      <p>
+        <% @cocktail.doses.each do |dose| %>
+        <%= dose.description %>
+        <%= dose.ingredient.name %>
+        <%= link_to cocktail_dose_path(@cocktail, dose), method: :delete, data: { confirm: 'Are you sure you want to delete this article?'} do %>
+        <i class="fa fa-trash-o"></i>
+        <% end %>
 
-    </p>
-  <% end %>
+      </p>
+      <% end %>
 
     </div>
     <div class="media-section">
       <p><%= link_to 'pimp it!', new_cocktail_dose_path(@cocktail)  %></p>
+
+    </div>
+    <div>
+    <%= cl_image_tag @cocktail.photo, height: 300, width: 400, crop: :fill %>
 
     </div>
   </div>
